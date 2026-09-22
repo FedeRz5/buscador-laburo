@@ -19,6 +19,14 @@ Consultá [SETUP.md](SETUP.md) para configurar el entorno. Los nombres de comand
 
 ## Buscar en LinkedIn
 
+Para buscar puestos administrativos en Argentina publicados durante los últimos siete días, ejecutá:
+
+```sh
+bun run .agents/skills/linkedin-search/cli/src/cli.ts search -q "administrativo" -l "Argentina" --jobage 7 --format plain
+```
+
+Cambiá el puesto y la ubicación según lo que estés buscando. La salida muestra los datos y enlaces de los avisos; no necesitás cargar un CV para consultar ofertas.
+
 Consultá la [guía de LinkedIn en español](LINKEDIN.md): explica cómo funciona el scraper, qué necesitás y cómo buscar por puesto, ubicación y modalidad, con ejemplos para Argentina.
 
 ## Flujos disponibles
