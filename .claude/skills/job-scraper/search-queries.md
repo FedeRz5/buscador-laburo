@@ -1,75 +1,32 @@
-# Search Queries for Job Scraper
+# Búsquedas de empleo en Argentina
 
-<!-- SETUP: Customize these queries based on your skills, target roles, and location -->
+## Fuentes incluidas
 
-## Search Sites
+- LinkedIn: puestos de distintos sectores, con ubicación Argentina o una ciudad argentina.
+- Get on Board: tecnología y diseño; aplicar el filtro de país Argentina.
+- FreeHire: tecnología, ingeniería y datos; aplicar `--country AR`.
 
-Primary (your market's job boards - scaffold one with `/add-portal`):
-- **[YOUR_JOB_BOARD]** - your market's largest general job board
-- **linkedin.com/jobs** - LinkedIn job listings (filter: [YOUR_COUNTRY] / [YOUR_CITY])
-- **[YOUR_INDUSTRY_JOB_BOARD]** - a niche/industry board for your field (optional)
-- **[YOUR_ADDITIONAL_JOB_BOARD]** - another major board for your market (optional)
+## Comandos
 
-Secondary (company career pages via Google):
-- Direct Google searches with `site:` filters for known target companies
-
-## Query Categories
-
-Queries are grouped by priority. Each query should be combined with your location terms (e.g. your city, region, or metro area) where the site supports it.
-
-### Priority 1: [YOUR_PRIMARY_ROLE_TYPE]
-
-These match your strongest and most desired career direction.
-
-```
-site:[YOUR_JOB_BOARD] "[YOUR_PRIMARY_JOB_TITLE]" [YOUR_CITY]
-site:[YOUR_JOB_BOARD] "[YOUR_KEY_SKILL]" [YOUR_CITY]
-site:linkedin.com/jobs "[YOUR_PRIMARY_JOB_TITLE]" [YOUR_COUNTRY]
+```sh
+python buscar.py "administrativo"
+python buscar.py "atención al cliente" --ciudad "Córdoba"
+python buscar.py "programador" --portal freehire --modalidad remoto
+python buscar.py "diseñador" --portal getonbrd --modalidad remoto
 ```
 
-### Priority 2: [YOUR_DOMAIN_EXPERTISE]
+Para ejecutar directamente los conectores, usar sus filtros explícitos de país. La interfaz `buscar.py` los agrega automáticamente.
 
-These match your domain expertise.
+## Consultas complementarias
 
-```
-site:[YOUR_JOB_BOARD] [YOUR_DOMAIN_KEYWORD_1] [YOUR_CITY] OR [YOUR_REGION]
-site:[YOUR_JOB_BOARD] [YOUR_DOMAIN_KEYWORD_2] [YOUR_COUNTRY]
-site:linkedin.com/jobs [YOUR_DOMAIN_KEYWORD_1] [YOUR_CITY] [YOUR_COUNTRY]
-```
-
-### Priority 3: [YOUR_ADJACENT_ROLE_TYPE]
-
-Adjacent roles you could pivot into.
-
-```
-site:[YOUR_JOB_BOARD] "[YOUR_ADJACENT_TITLE_1]" [YOUR_KEY_SKILL] [YOUR_CITY]
-site:[YOUR_JOB_BOARD] "[YOUR_ADJACENT_TITLE_2]" [YOUR_KEY_SKILL] [YOUR_CITY]
+```text
+site:linkedin.com/jobs "[PUESTO]" "Argentina"
+site:getonbrd.com "[PUESTO]" "Argentina"
+"[EMPRESA]" "trabajá con nosotros" "Argentina"
 ```
 
-### Priority 4: Broader Technical / Consulting
+Reemplazar los marcadores con los datos de la búsqueda. No ampliar a otros países automáticamente. Para trabajo remoto, confirmar que se acepten postulantes residentes en Argentina. Si el aviso no lo aclara, marcarlo como pendiente de verificar.
 
-Wider net for general technical roles.
+## Selección
 
-```
-site:[YOUR_JOB_BOARD] [YOUR_KEY_SKILL] developer [YOUR_CITY]
-site:linkedin.com/jobs "[YOUR_KEY_SKILL] developer" [YOUR_CITY]
-site:[YOUR_JOB_BOARD] "technical consultant" [YOUR_DOMAIN] [YOUR_CITY]
-```
-
-## Location Filter
-
-When evaluating results, verify the job location is within reasonable commute distance from your home. Define acceptable areas:
-- [YOUR_CITY] and surrounding areas
-- [ACCEPTABLE_AREA_1]
-- [ACCEPTABLE_AREA_2]
-- [BORDERLINE_AREA] (borderline - ~X min by transit)
-- [TOO_FAR_AREA] (too far)
-
-## Date Filter
-
-Only include jobs posted within the last 14 days, or with an application deadline that has not yet passed. If a posting date cannot be determined, include it but flag as "date unknown".
-
-## Adapting Queries
-
-If the user specifies a focus area, select queries from the matching category and also generate 2-3 custom queries for that focus. For example:
-- "/scrape [focus_area]" -> relevant category queries + custom focus-specific queries
+Priorizar avisos de los últimos 14 días. Consultar ciudad, provincia, modalidad y distancia aceptable para puestos presenciales o híbridos. No asumir que Buenos Aires representa a todo el país. Si la fecha no está disponible, informar esa limitación.

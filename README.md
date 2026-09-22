@@ -1,33 +1,44 @@
-# Buscador de empleo con IA
+# Buscador de Laburo 🇦🇷
 
-Herramientas de búsqueda de ofertas laborales y asistencia para preparar postulaciones. Esta adaptación incorpora Get on Board para Latinoamérica y prioriza el español en los documentos y la interacción.
+Búsqueda de empleo en Argentina desde la terminal, con filtros por puesto, ciudad y modalidad. Adaptación y desarrollo local por **Federico Reiz**.
 
-Permite buscar en LinkedIn, FreeHire, Get on Board y varios portales de Dinamarca; evaluar ofertas, adaptar un CV, redactar cartas y preparar entrevistas. Los conectores se ejecutan desde la terminal con Bun. Los flujos de asistencia están definidos en `.claude/`.
+Reúne conectores de LinkedIn, Get on Board y FreeHire. También incluye instrucciones de IA para evaluar ofertas, preparar un CV, redactar cartas y practicar entrevistas. Podés buscar avisos sin cargar datos personales ni usar un modelo de IA.
 
-## Inicio rápido
+## Arrancá por acá
 
-Requisitos: Bun para los conectores; Python 3 para las herramientas salariales y verificaciones. Para generar documentos se necesitan LuaLaTeX y XeLaTeX.
-
-Desde la raíz del repositorio:
+Necesitás **Python 3.10 o posterior**, **Bun** y conexión a internet. Desde la carpeta del proyecto:
 
 ```sh
-bun run .agents/skills/getonbrd-search/cli/src/cli.ts search --category design-ux --remote --format table
-bun run .agents/skills/linkedin-search/cli/src/cli.ts --help
+python buscar.py "administrativo"
+python buscar.py "atención al cliente" --ciudad "Córdoba" --modalidad presencial
+python buscar.py "programador" --modalidad remoto --dias 7
 ```
 
-Consultá [SETUP.md](SETUP.md) para configurar el entorno. Los nombres de comandos, opciones y campos JSON se mantienen para conservar compatibilidad.
+Por defecto busca en LinkedIn, en Argentina, durante los últimos 14 días y muestra hasta 10 resultados de una página. No envía postulaciones ni inicia sesión en tu cuenta.
 
-## Buscar en LinkedIn
+## Elegí dónde buscar
 
-Para buscar puestos administrativos en Argentina publicados durante los últimos siete días, ejecutá:
+| Portal | Uso | Filtros locales |
+|--------|-----|----------------|
+| LinkedIn | Puestos de distintos sectores | País, ciudad y modalidad |
+| Get on Board | Tecnología, diseño y UX | País; filtro remoto opcional |
+| FreeHire | Programación, ingeniería y datos | País, ciudad y modalidad según los datos del proveedor |
 
 ```sh
-bun run .agents/skills/linkedin-search/cli/src/cli.ts search -q "administrativo" -l "Argentina" --jobage 7 --format plain
+python buscar.py "diseñador" --portal getonbrd
+python buscar.py "backend" --portal freehire --modalidad remoto
+python buscar.py "ventas" --ciudad "Rosario" --formato json
+python buscar.py --help
 ```
 
-Cambiá el puesto y la ubicación según lo que estés buscando. La salida muestra los datos y enlaces de los avisos; no necesitás cargar un CV para consultar ofertas.
+Todos los comandos de `buscar.py` agregan el filtro de Argentina. Los conectores de bajo nivel conservan sus opciones técnicas, por lo que si los ejecutás directamente tenés que pasar el país explícitamente. El filtro remoto no garantiza que acepten residentes argentinos: revisá el aviso. En Get on Board, las ofertas sin país declarado pueden quedar fuera; su filtro tampoco permite buscar por ciudad.
 
-Consultá la [guía de LinkedIn en español](LINKEDIN.md): explica cómo funciona el scraper, qué necesitás y cómo buscar por puesto, ubicación y modalidad, con ejemplos para Argentina.
+## Guías
+
+- [Configurar el proyecto](SETUP.md).
+- [Cómo funciona el scraper de LinkedIn](LINKEDIN.md).
+- [Filtros, ejemplos y alcance de Argentina](ARGENTINA.md).
+- [Referencias salariales con datos propios](tools/README_SALARY_TOOL.md).
 
 ## Flujos disponibles
 
@@ -70,4 +81,4 @@ Las ofertas cambian y cada portal tiene sus propias condiciones y límites. Las 
 
 ## Origen y licencia
 
-Adaptación de [ai-job-search de Mads Lorentzen](https://github.com/MadsLorentzen/ai-job-search), con licencia MIT. Se conserva el aviso original en [LICENSE](LICENSE). Las modificaciones de esta adaptación no implican autoría exclusiva sobre el proyecto original.
+Buscador de Laburo es una adaptación de Federico Reiz para Argentina, basada en [ai-job-search de Mads Lorentzen](https://github.com/MadsLorentzen/ai-job-search). Se distribuye con licencia MIT; [LICENSE](LICENSE) conserva los avisos de autoría del código original y de las modificaciones.

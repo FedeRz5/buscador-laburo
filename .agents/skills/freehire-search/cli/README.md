@@ -1,5 +1,8 @@
 # freehire-cli
 
+En este proyecto, usá Argentina como país: agregá `--country AR` al ejecutar búsquedas directas. La entrada recomendada es `python buscar.py "PUESTO"` desde la raíz.
+
+
 CLI for searching the [freehire.dev](https://freehire.dev) job aggregator across
 **many markets** (tech-focused), via its public JSON API.
 
@@ -28,7 +31,7 @@ The CLI runs without any install because it has zero runtime dependencies.
 The base URL defaults to `https://freehire.dev` and is overridable with an env var:
 
 ```bash
-FREEHIRE_API_URL=http://localhost:8080 bun run src/cli.ts search -q "go"
+FREEHIRE_API_URL=http://localhost:8080 bun run src/cli.ts search --country AR -q "go"
 ```
 
 The freehire backend is MIT-licensed and stands up with one command via Docker
@@ -48,13 +51,13 @@ All errors are written to **stderr** as `{ "error": "...", "code": "..." }` with
 
 ```bash
 # Senior backend roles, table view
-bun run src/cli.ts search -q "backend engineer" --seniority senior --limit 10 --format table
+bun run src/cli.ts search --country AR -q "backend engineer" --seniority senior --limit 10 --format table
 
 # Remote React roles in the EU
-bun run src/cli.ts search -q "react" --remote remote --region eu --format table
+bun run src/cli.ts search -q "react" --remote remote --country AR --format table
 
 # DevOps roles in Germany posted in the last 14 days
-bun run src/cli.ts search --category devops --country DE --jobage 14 --format table
+bun run src/cli.ts search --category devops --country AR --jobage 14 --format table
 
 # Full detail for one job (slug from a search result's id)
 bun run src/cli.ts detail golang-zensar-2bxu6dxm --format plain

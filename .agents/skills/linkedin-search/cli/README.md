@@ -1,5 +1,8 @@
 # linkedin-cli
 
+En este proyecto, usá Argentina como país: agregá `--location "Argentina"` al ejecutar búsquedas directas. La entrada recomendada es `python buscar.py "PUESTO"` desde la raíz.
+
+
 Guía de uso en español de Argentina: [Cómo buscar trabajo en LinkedIn](../../../../LINKEDIN.md).
 
 CLI for searching jobs on LinkedIn's public job listings, for **any country/region**
@@ -35,14 +38,14 @@ All errors are written to **stderr** as `{ "error": "...", "code": "..." }` with
 ## Quick examples
 
 ```bash
-# Software roles in Hyderabad, last 7 days
-bun run src/cli.ts search -q "backend engineer" -l "Hyderabad, Telangana, India" --jobage 7 --format table
+# Puestos de software en La Plata, últimos 7 días
+bun run src/cli.ts search -q "backend engineer" -l "La Plata, Argentina" --jobage 7 --format table
 
-# Design roles in London
-bun run src/cli.ts search -q "product designer" -l "London, United Kingdom" --format table
+# Puestos de diseño en Rosario
+bun run src/cli.ts search -q "product designer" -l "Rosario, Argentina" --format table
 
 # Fully remote
-bun run src/cli.ts search -q "technical writer" -l "Remote" --remote remote --format table
+bun run src/cli.ts search -q "technical writer" -l "Argentina" --remote remote --format table
 
 # Full detail for one job
 bun run src/cli.ts detail 4426311357 --format plain
@@ -54,7 +57,7 @@ See `../SKILL.md` for the full flag reference and the Terms-of-Service note.
 
 | Flag | Alias | Description |
 |------|-------|-------------|
-| `--location` | `-l` | **Required.** Place string, e.g. `"Mumbai, Maharashtra, India"`, `"Berlin, Germany"`, `"Remote"`. |
+| `--location` | `-l` | **Required.** Place string, e.g. `"Buenos Aires, Argentina"`, `"Córdoba, Argentina"`, `"Remote"`. |
 | `--query` | `-q` | Keywords (title / skill / role). Recommended. |
 | `--jobage` | | Posted within N days: `1`, `7`, `14`, `30`. |
 | `--remote` | | `remote` \| `hybrid` \| `onsite`. |

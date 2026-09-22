@@ -2,6 +2,10 @@
 
 Esta distribución pública no tiene un perfil personal configurado. Nombre: [YOUR_NAME].
 
+## Mercado
+
+El proyecto está orientado a Argentina. Usá `python buscar.py "PUESTO"` como entrada simple, o los conectores con filtros explícitos: LinkedIn `--location "Argentina"`, FreeHire `--country AR`, Get on Board `--location "Argentina"`. Preguntá por ciudad y modalidad cuando haga falta. No presentes un aviso remoto como apto para Argentina sin comprobar sus restricciones de residencia.
+
 ## Idioma y fuentes
 
 Respondé en español por defecto. Redactá CV y cartas en el idioma de la oferta; ante ambigüedad usá español. Conservá nombres de API, comandos y rutas. Usá únicamente experiencia y competencias confirmadas por la persona.

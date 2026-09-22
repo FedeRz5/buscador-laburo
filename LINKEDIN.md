@@ -24,6 +24,10 @@ bun --version
 
 Este conector no tiene dependencias de ejecución externas. Para usarlo no hace falta correr `bun install`; ese paso se usa para las herramientas de desarrollo.
 
+## Entrada simple para Argentina
+
+Desde la raíz podés usar `python buscar.py "administrativo" --ciudad "Córdoba"`. El comando agrega Argentina como país y usa LinkedIn por defecto. Consultá [ARGENTINA.md](ARGENTINA.md) para todos los filtros. Los comandos directos de esta guía también siguen disponibles.
+
 ## Hacer tu primera búsqueda
 
 Por ejemplo, para buscar puestos administrativos en Argentina publicados en los últimos siete días:

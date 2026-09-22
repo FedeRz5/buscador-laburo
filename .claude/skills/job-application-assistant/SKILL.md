@@ -1,13 +1,14 @@
 ---
 name: job-application-assistant
 description: >
-  Assists with job applications: evaluating job postings, tailoring CVs, writing cover letters,
-  and preparing for interviews. Triggers on keywords like: job posting, job application, CV,
-  cover letter, resume, interview prep, job fit, career, application, apply, ansøgning, stilling
+  Asiste con postulaciones en Argentina: evaluar ofertas, adaptar CV, redactar cartas y preparar entrevistas. Usar para currículum, postulación, entrevista, compatibilidad con un puesto o búsqueda laboral.
 allowed-tools: Read, Glob, Grep, WebFetch, WebSearch, Edit, Write, AskUserQuestion
 ---
 
-# Job Application Assistant
+# Asistente de postulaciones en Argentina
+
+Usar español de Argentina en la conversación y el idioma del aviso en los documentos. No agregar DNI, CUIL, domicilio completo, edad o estado civil por defecto. Consultar únicamente los datos necesarios. Para remuneración pretendida, aclarar moneda (ARS o USD), período y si es bruto o neto; no inventar valores. Distinguir relación de dependencia y prestación de servicios solo si el aviso lo especifica. No dar por confirmado que un empleo remoto acepta residentes en Argentina.
+
 
 ---
 

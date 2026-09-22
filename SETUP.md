@@ -3,7 +3,7 @@
 ## Herramientas
 
 - Bun: ejecuta los conectores TypeScript de `.agents/skills/`.
-- Python 3: ejecuta verificaciones y las utilidades salariales.
+- Python 3.10 o posterior: ejecuta verificaciones y las utilidades salariales.
 - LuaLaTeX y XeLaTeX: compilan CV y cartas, respectivamente.
 - Poppler (`pdftotext`): comprueba la extracción de texto para sistemas de selección.
 
@@ -12,11 +12,13 @@ Los conectores incluyen instrucciones específicas en su carpeta `cli/`. Para de
 ## Buscar ofertas
 
 ```sh
-bun run .agents/skills/getonbrd-search/cli/src/cli.ts search --category design-ux --remote --format table
-bun run .agents/skills/freehire-search/cli/src/cli.ts --help
+python buscar.py "administrativo"
+python buscar.py "programador" --portal freehire --modalidad remoto
+python buscar.py "diseñador" --portal getonbrd
+python buscar.py --help
 ```
 
-Elegí ubicación y filtros según la búsqueda. No hay una persona ni una ciudad preconfiguradas.
+El país configurado es Argentina; no hay una persona ni una ciudad preconfiguradas. Consultá [ARGENTINA.md](ARGENTINA.md) para ver filtros y límites por portal.
 
 ## Preparar postulaciones
 

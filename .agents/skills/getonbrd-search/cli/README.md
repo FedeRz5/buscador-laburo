@@ -1,5 +1,8 @@
 # getonbrd-search CLI
 
+En este proyecto, usá Argentina como país: agregá `--location "Argentina"` al ejecutar búsquedas directas. La entrada recomendada es `python buscar.py "PUESTO"` desde la raíz.
+
+
 Search jobs on [Get on Board](https://www.getonbrd.com) (LatAm tech & design job board)
 via its **public API**. Zero runtime dependencies — runs with just `bun`.
 
@@ -17,16 +20,16 @@ cd .agents/skills/getonbrd-search/cli && bun install
 
 ```bash
 # Design/UX jobs (recommended: browse the category), human-readable
-bun run src/cli.ts search --category design-ux --limit 15 --format table
+bun run src/cli.ts search --location "Argentina" --category design-ux --limit 15 --format table
 
 # Fully remote design/UX
-bun run src/cli.ts search --category design-ux --remote --format table
+bun run src/cli.ts search --location "Argentina" --category design-ux --remote --format table
 
-# Design/UX in Chile
-bun run src/cli.ts search --category design-ux --location "Chile" --format table
+# Diseño/UX en Argentina
+bun run src/cli.ts search --category design-ux --location "Argentina" --format table
 
 # Full-text keyword search
-bun run src/cli.ts search --query "product designer" --format table
+bun run src/cli.ts search --location "Argentina" --query "product designer" --format table
 
 # Full detail of one job
 bun run src/cli.ts detail product-designer-lemontech-santiago-441b --format plain
@@ -53,5 +56,5 @@ Run with no args (or `--help`) for the full flag reference.
 
 ```bash
 bun run typecheck
-bun run test        # live smoke test: search returns results; error paths exit 1
+bun run test        # live smoke test: search --location "Argentina" returns results; error paths exit 1
 ```

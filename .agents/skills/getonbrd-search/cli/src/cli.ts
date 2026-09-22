@@ -40,7 +40,7 @@ function parseFlags(argv: string[]): Flags {
 const HELP = `getonbrd-cli — search jobs on Get on Board (getonbrd.com), LatAm tech & design, remote-friendly
 
 USAGE
-  bun run src/cli.ts search [--category <id>] [--query "<text>"] [flags]
+  bun run src/cli.ts search --location "Argentina" [--category <id>] [--query "<text>"] [flags]
   bun run src/cli.ts detail <slug|url> [--format json|plain]
 
 SEARCH FLAGS
@@ -48,7 +48,7 @@ SEARCH FLAGS
                         e.g. design-ux, programming, data-science-analytics, sysadmin-devops-qa
   --query, -q <text>    Full-text keyword search. Use alone, or with --category to
                         narrow that category by title.
-  --location, -l <text> Client-side filter on country/remote, e.g. "Chile", "Remote".
+  --location, -l <text> Client-side filter on country/remote, e.g. "Argentina", "Remote".
   --remote              Only fully remote roles.
   --jobage <days>       Posted within N days (client-side). Default: all.
   --page <n>            1-indexed page. Default 1.
@@ -58,10 +58,10 @@ SEARCH FLAGS
   (Provide --category or --query, or both.)
 
 EXAMPLES
-  bun run src/cli.ts search --category design-ux --limit 15 --format table
-  bun run src/cli.ts search --category design-ux --remote --location "Chile" --format table
-  bun run src/cli.ts search --query "product designer" --format table
-  bun run src/cli.ts search -c design-ux -q "ui" --jobage 30 --format table
+  bun run src/cli.ts search --location "Argentina" --category design-ux --limit 15 --format table
+  bun run src/cli.ts search --category design-ux --remote --location "Argentina" --format table
+  bun run src/cli.ts search --location "Argentina" --query "product designer" --format table
+  bun run src/cli.ts search --location "Argentina" -c design-ux -q "ui" --jobage 30 --format table
   bun run src/cli.ts detail product-designer-lemontech-santiago-441b --format plain
 
 Public API (getonbrd.com/api). Personal use, keep volume low.

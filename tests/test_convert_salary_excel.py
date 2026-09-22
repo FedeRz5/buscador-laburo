@@ -38,7 +38,7 @@ class DetectColumnTypeTests(unittest.TestCase):
         self.assertEqual(detect_column_type("Engineering"), None)
 
     def test_count_headers_still_match_common_labels(self):
-        for header in ("Count", "Engineering Count", "Antal medarbejdere"):
+        for header in ("Count", "Engineering Count", "Cantidad empleados"):
             with self.subTest(header=header):
                 self.assertEqual(detect_column_type(header), "count")
 
@@ -46,14 +46,12 @@ class DetectColumnTypeTests(unittest.TestCase):
         self.assertIsNone(detect_column_type("Accounting Total"))
         self.assertEqual(detect_column_type("Accounting Index"), "index")
 
-    def test_danish_compound_headers_still_match(self):
-        self.assertEqual(detect_column_type("Lønindeks"), "index")
+    def test_spanish_accented_headers_match(self):
+        self.assertEqual(detect_column_type("Índice salarial"), "index")
 
-    def test_compound_patterns_match_as_substring_but_others_do_not(self):
-        # A compound token (Danish "løn") matches inside a glued header word.
-        self.assertTrue(header_matches("lønindeks", INDEX_PATTERNS))
-        # A pattern that is not a compound token ("salary") only matches as a
-        # whole token, so it must not match inside an unrelated glued word.
+    def test_patterns_match_whole_tokens(self):
+        self.assertTrue(header_matches("índice salarial", INDEX_PATTERNS))
+        # No confundir un fragmento de palabra con un encabezado completo.
         self.assertFalse(header_matches("salaryindex", INDEX_PATTERNS))
         self.assertTrue(header_matches("salary index", INDEX_PATTERNS))
 
@@ -86,6 +84,19 @@ class DetectColumnTypeTests(unittest.TestCase):
         companies = parse_sheet(ws)
 
         self.assertEqual(companies[0]["categories"]["software_engineering"], {"count": 8, "index": 110.0})
+
+
+
+
+class ArgentinaSheetTests(unittest.TestCase):
+    def test_spanish_headers_and_category_pair(self):
+        ws = FakeWorksheet([
+            ("Razón social", "Ciudad", "Administración cantidad", "Administración índice"),
+            ("Empresa de ejemplo SRL", "Córdoba", 4, 110),
+        ])
+        row = parse_sheet(ws)[0]
+        self.assertEqual(row["city"], "Córdoba")
+        self.assertEqual(row["categories"]["administración"], {"count": 4, "index": 110})
 
 
 if __name__ == "__main__":

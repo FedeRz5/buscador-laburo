@@ -72,7 +72,7 @@ function commaList(raw: FlagValue): string[] {
 const HELP = `freehire-cli — search the freehire.dev job aggregator (many markets, tech-focused)
 
 USAGE
-  bun run src/cli.ts search [-q "<keywords>"] [facet flags] [--format json|table|plain]
+  bun run src/cli.ts search --country AR [-q "<keywords>"] [facet flags] [--format json|table|plain]
   bun run src/cli.ts detail <slug|url> [--format json|plain]
 
 SEARCH FLAGS
@@ -83,8 +83,8 @@ SEARCH FLAGS
   --format <fmt>          json (default) | table | plain.
 
 FACET FILTERS (values from freehire.dev's controlled vocabularies; comma = OR)
-  --region <codes>        Macro-region: global, eu, us, apac, latam, cis, ...  e.g. --region eu,us
-  --country <codes>       ISO-3166 alpha-2, e.g. --country DE,GB
+  --region <codes>        Macro-region: global, eu, us, apac, latam, cis, ...  e.g. --country AR,us
+  --country <codes>       ISO-3166 alpha-2, e.g. --country AR,GB
   --city <names>          City name(s), e.g. --city Berlin
   --seniority <levels>    junior, middle, senior, staff, principal, lead, ...
   --category <cats>       backend, frontend, fullstack, devops, ml_ai, qa, ...
@@ -98,9 +98,9 @@ DETAIL
                           or a full https://freehire.dev/jobs/<slug> URL.
 
 EXAMPLES
-  bun run src/cli.ts search -q "backend engineer" --seniority senior --limit 10 --format table
-  bun run src/cli.ts search -q "react" --remote remote --region eu --format table
-  bun run src/cli.ts search --category devops --country DE --jobage 14 --format table
+  bun run src/cli.ts search --country AR -q "backend engineer" --seniority senior --limit 10 --format table
+  bun run src/cli.ts search -q "react" --remote remote --country AR --format table
+  bun run src/cli.ts search --category devops --country AR --jobage 14 --format table
   bun run src/cli.ts detail golang-zensar-2bxu6dxm --format plain
 
 Reads are public (no API key). Source: ${baseUrl()} — a personal project,

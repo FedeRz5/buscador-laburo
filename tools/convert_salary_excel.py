@@ -17,8 +17,8 @@ The output file (salary_data.json) will be written to the repository root.
 
 Expected Excel format:
     - A header row with column names
-    - A "Company" or "Firma" column (required)
-    - An optional "City" or "By" column
+    - A "Empresa" or "Company" column (required)
+    - An optional "Ciudad" or "City" column
     - Any number of numeric data columns (salary index, count, etc.)
 
 The script auto-detects the header row and column layout. For Excel files
@@ -37,17 +37,12 @@ except ImportError:
     openpyxl = None
 
 
-# Column name patterns for auto-detection
-COMPANY_PATTERNS = {"firma", "company", "virksomhed", "employer", "arbejdsgiver"}
-CITY_PATTERNS = {"by", "city", "kommune", "location", "lokation", "sted"}
-COUNT_PATTERNS = {"antal", "count", "number", "n", "employees", "medarbejdere"}
-INDEX_PATTERNS = {"indeks", "index", "idx", "salary", "løn", "median", "average", "gennemsnit"}
-# "Compound" tokens: pattern words allowed to match as a substring of a larger
-# header token, for languages that glue words together (e.g. Danish "lønindeks"
-# -> løn + indeks). Languages that write headers as separate words need none.
-# Ships populated for this repo's Danish demonstration data; a fork targeting
-# another locale edits this constant.
-COMPOUND_PATTERNS = {"antal", "indeks", "løn", "gennemsnit", "medarbejdere"}
+# Encabezados de planillas locales; se conserva compatibilidad con el inglés.
+COMPANY_PATTERNS = {"empresa", "razón social", "razon social", "company", "employer"}
+CITY_PATTERNS = {"ciudad", "localidad", "ubicación", "ubicacion", "city", "location"}
+COUNT_PATTERNS = {"cantidad", "empleados", "personas", "count", "number", "n", "employees"}
+INDEX_PATTERNS = {"índice", "indice", "salario", "sueldo", "mediana", "promedio", "index", "idx", "salary", "median", "average"}
+COMPOUND_PATTERNS = set()
 
 
 def header_matches(header, patterns):
@@ -58,7 +53,7 @@ def header_matches(header, patterns):
     languages that form compound words.
     """
     h = header.lower().strip()
-    tokens = set(re.findall(r"[a-zæøåöäü0-9]+", h))
+    tokens = set(re.findall(r"[a-záéíóúüñ0-9]+", h))
 
     for p in patterns:
         if p in tokens:
@@ -72,7 +67,7 @@ def strip_type_patterns(header, patterns):
     """Remove count/index words from a header to derive a category name."""
     name = header.lower()
     for p in patterns:
-        name = re.sub(rf"(?<![a-zæøåöäü0-9]){re.escape(p)}(?![a-zæøåöäü0-9])", "", name)
+        name = re.sub(rf"(?<![a-záéíóúüñ0-9]){re.escape(p)}(?![a-záéíóúüñ0-9])", "", name)
     return name.strip(" _-")
 
 

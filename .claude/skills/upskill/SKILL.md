@@ -1,13 +1,14 @@
 ---
 name: upskill
 description: >
-  Compares tracked job postings against the candidate profile to identify skill gaps and generate
-  a prioritized learning plan with study resources. Triggers on: /upskill, upskill, skill gaps,
-  what should I learn, learning plan
+  Identifica brechas de competencias a partir de ofertas de Argentina y propone un plan de aprendizaje. Usar para qué estudiar, mejorar el perfil, plan de aprendizaje o /upskill.
 allowed-tools: Read, Write, Glob, Grep, WebFetch, WebSearch
 ---
 
-# Upskill
+# Plan de aprendizaje para Argentina
+
+Basar las prioridades en las ofertas locales guardadas, sin asumir un mercado extranjero. Responder en español de Argentina. Priorizar recursos accesibles desde Argentina y opciones gratuitas cuando corresponda; verificar disponibilidad y costos antes de recomendar cursos pagos. No convertir precios ni prometer inserción laboral sin evidencia.
+
 
 ---
 

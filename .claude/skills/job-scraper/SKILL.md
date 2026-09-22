@@ -1,14 +1,15 @@
 ---
 name: scrape
 description: >
-  Finds new job postings matching your profile via installed portal-search CLIs
-  (LinkedIn, local job boards, and any skills added with /add-portal). Deduplicates
-  across runs. Triggers on: job scrape, find jobs, search jobs, new jobs, job search,
-  scrape jobs, /scrape
+  Busca ofertas laborales en Argentina con LinkedIn, Get on Board y FreeHire,
+  elimina duplicados y evalúa compatibilidad con el perfil. Usar para buscar laburo,
+  nuevas ofertas, buscar empleo o /scrape.
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash(bun --version), Bash(bun run .agents/skills/*/cli/src/cli.ts *), WebFetch, WebSearch, Agent, AskUserQuestion
 ---
 
-# Job Scraper
+# Buscador de ofertas en Argentina
+
+Alcance: Argentina. En cada llamada usar `--location "Argentina"` (LinkedIn y Get on Board) o `--country AR` (FreeHire). LinkedIn admite ciudad seguida de Argentina. No asumir elegibilidad de un aviso remoto: verificar residencia permitida antes de recomendarlo. La estrategia se encuentra en `search-queries.md`.
 
 ---
 
