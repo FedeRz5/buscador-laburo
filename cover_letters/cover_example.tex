@@ -1,0 +1,43 @@
+% Ejemplo público sin datos personales. Marcador: [YOUR NAME]
+\documentclass[]{cover}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\rfoot{Página \thepage \hspace{0pt}}
+\thispagestyle{empty}
+\renewcommand{\headrulewidth}{0pt}
+\begin{document}
+
+\namesection{}{\Huge{[NOMBRE]}}{  \href{mailto:contacto@example.com}{contacto@example.com} | [TELÉFONO] |  \urlstyle{same}\href{https://example.com}{Portfolio de ejemplo}
+}
+
+
+\currentdate{\today}
+\lettercontent{Estimado equipo de selección:}
+
+\lettercontent{[Introducción: completar con información confirmada y relevante para la oferta.]}
+
+\lettercontent{[Experiencia: completar con información confirmada y relevante para la oferta.]}
+
+{\raggedright\fontspec[Path = OpenFonts/fonts/raleway/]{Raleway-Medium}\fontsize{11pt}{13pt}\selectfont
+\begin{itemize}
+    \item \textbf{[Logro 1]:} [resultado concreto y verificable]
+    \item \textbf{[Logro 2]:} [competencia o proyecto relacionado con el puesto]
+    \item \textbf{[Logro 3]:} [evidencia de una competencia deseable]
+\end{itemize}\par}
+\vspace{6pt}
+
+\lettercontent{[Motivación: completar con información confirmada y relevante para la oferta.]}
+
+\lettercontent{[Aporte al equipo: completar con información confirmada y relevante para la oferta.]}
+
+\lettercontent{Quedo a disposición para conversar sobre la propuesta.}
+
+\begin{flushright}
+\closing{Saludos cordiales,}
+
+\signature{[NOMBRE]}
+\end{flushright}
+\end{document}
